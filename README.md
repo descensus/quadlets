@@ -12,6 +12,8 @@
 > mkdir -p ~/.config/containers/systemd
 >
 >  \# Place the containerfile in .config/containers/systemd/
+>
+>systemctl --user daemon-reload
 > 
 >  systemctl --user enable --now myservice
 
