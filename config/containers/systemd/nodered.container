@@ -1,0 +1,15 @@
+[Unit]
+Description=Nodered
+
+[Container]
+ContainerName=nodered
+Image=docker.io/nodered/node-red
+Volume=/home/_nodered/nodered-data/nodered:/data:Z,U
+PublishPort=8080:1880
+
+[Service]
+Restart=always
+TimeoutStartSec=90
+
+[Install]
+WantedBy=default.target
