@@ -1,0 +1,18 @@
+[Unit]
+Description=postgresus
+After=network-online.target
+After=local-fs.target
+
+[Container]
+ContainerName=postgresus
+Image=docker.io/rostislavdugin/postgresus:latest
+Volume=%h/backup:/postgresus-data:U,Z
+PublishPort=4005:4005
+
+[Service]
+ExecStartPre=mkdir -p %h/backup
+Restart=unless-stopped
+TimeoutStartSec=90
+
+[Install]
+WantedBy=default.target
