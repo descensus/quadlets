@@ -1,14 +1,16 @@
 [Unit]
 Description=Nodered
+After=network-online.target
+After=local-fs.target
 
 [Container]
 ContainerName=nodered
 Image=docker.io/nodered/node-red
-Volume=/home/_nodered/nodered-data/nodered:/data:Z,U
+Volume=%h/nodered-data:/data:Z,U
 PublishPort=8080:1880
 
 [Service]
-Restart=always
+ExecStartPre=mkdir -p %h/nodered-data/
 TimeoutStartSec=90
 
 [Install]
