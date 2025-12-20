@@ -1,0 +1,25 @@
+[Unit]
+Description=Garage
+After=network-online.target
+After=local-fs.target
+
+[Container]
+ContainerName=garage
+Image=docker.io/dxflrs/garage:v2.1.0
+PublishPort=0.0.0.0:3900:3900
+PublishPort=0.0.0.0:3901:3901
+PublishPort=0.0.0.0:3902:3902
+PublishPort=0.0.0.0:3903:3903
+Volume=%h/garage/config/garage.toml:/etc/garage.toml:Z,U
+Volume=%h/garage/meta:/var/lib/garage/meta:Z,U
+Volume=%h/garage/data:/var/lib/garage/data:Z,U
+
+[Service]
+ExecStartPre=mkdir -p %h/garage/config
+ExecStartPre=mkdir -p %h/garage/data
+ExecStartPre=mkdir -p %h/garage/meta
+Restart=unless-stopped
+TimeoutStartSec=90
+
+[Install]
+WantedBy=default.target
