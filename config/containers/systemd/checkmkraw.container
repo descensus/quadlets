@@ -1,0 +1,22 @@
+[Unit]
+Description=checkmk
+After=network-online.target
+After=local-fs.target
+
+[Container]
+Image=docker.io/checkmk/check-mk-raw:latest
+PublishPort=0.0.0.0:8080:5000
+PublishPort=0.0.0.0:8000:8000
+Environment=CMK_SITE_ID="asshat"
+Environment=CMK_PASSWORD="replace_me"
+# TODO: bind mount
+Volume=sites:/omd/sites:Z
+Volume=/etc/localtime:/etc/localtime:ro
+AddCapability=NET_RAW
+
+[Service]
+Restart=unless-stopped
+TimeoutStartSec=90
+
+[Install]
+WantedBy=default.target
