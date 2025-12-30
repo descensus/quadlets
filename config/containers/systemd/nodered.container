@@ -12,6 +12,7 @@ PublishPort=8080:1880
 [Service]
 ExecStartPre=mkdir -p %h/nodered-data/
 TimeoutStartSec=90
+Restart=unless-stopped
 
 [Install]
 WantedBy=default.target
