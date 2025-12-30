@@ -15,7 +15,7 @@ Volume=/etc/localtime:/etc/localtime:ro
 AddCapability=NET_RAW
 
 [Service]
-Restart=unless-stopped
+Restart=always
 TimeoutStartSec=90
 
 [Install]
