@@ -18,7 +18,7 @@ Volume=%h/garage/data:/var/lib/garage/data:Z,U
 ExecStartPre=mkdir -p %h/garage/config
 ExecStartPre=mkdir -p %h/garage/data
 ExecStartPre=mkdir -p %h/garage/meta
-Restart=unless-stopped
+Restart=always
 TimeoutStartSec=90
 
 [Install]
