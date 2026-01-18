@@ -11,7 +11,7 @@ PublishPort=4005:4005
 
 [Service]
 ExecStartPre=mkdir -p %h/backup
-Restart=unless-stopped
+Restart=always
 TimeoutStartSec=90
 
 [Install]
