@@ -15,7 +15,7 @@ Exec=--config.file=/etc/prometheus/prometheus.yml --web.config.file=/etc/prometh
 [Service]
 ExecStartPre=mkdir -p %h/prometheus/conf
 ExecStartPre=mkdir -p %h/prometheus/data
-Restart=unless-stopped
+Restart=always
 TimeoutStartSec=90
 
 [Install]
