@@ -1,0 +1,18 @@
+[Unit]
+Description=Pocketbase
+After=network-online.target
+After=local-fs.target
+
+[Container]
+ContainerName=Pocketbase
+Image=localhost/pocketbase
+Volume=%h/pocketbase:/pb/pb_data:Z,U
+PublishPort=9000:8080
+  
+[Service]
+ExecStartPre=mkdir -p %h/pocketbase
+TimeoutStartSec=90
+Restart=always
+
+[Install]
+WantedBy=default.target
